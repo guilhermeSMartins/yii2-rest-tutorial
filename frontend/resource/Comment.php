@@ -6,11 +6,6 @@ class Comment extends \common\models\Comment
 {
     // public $modelClass = Comment::class;
 
-    public function fields()
-    {
-        return ['id', 'title', 'body'];
-    }
-
     public function extraFields()
     {
         return ['post'];

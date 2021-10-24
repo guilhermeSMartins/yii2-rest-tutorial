@@ -21,6 +21,11 @@ use yii\behaviors\TimestampBehavior;
  */
 class Post extends \yii\db\ActiveRecord
 {
+    public function fields()
+    {
+        return ['id', 'title', 'body'];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -76,7 +81,7 @@ class Post extends \yii\db\ActiveRecord
      */
     public function getComments()
     {
-        return $this->hasMany(Comment::className(), ['post_id' => 'id']);
+        return $this->hasMany(Comment::class, ['post_id' => 'id']);
     }
 
     /**

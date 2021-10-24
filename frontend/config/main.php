@@ -1,5 +1,6 @@
 <?php
 
+use yii\rest\UrlRule;
 use yii\web\JsonParser;
 
 $params = array_merge(
@@ -46,6 +47,15 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [ 
+                    'class' => UrlRule::class, // make requests pluralized (post => posts)
+                    'controller' =>  ['post', 'comment']
+                    // 'controller' => [ 'p' => 'post' ] p now is avaible instead of post for routes
+                ],
+                [
+                    'pattern' => 'posts/<postId:\d+>/',
+                    'route' => 'comment/index'
+                ]
             ],
         ],
     ],
